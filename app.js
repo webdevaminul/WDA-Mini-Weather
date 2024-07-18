@@ -6,6 +6,7 @@ const clouds = document.getElementById("clouds");
 const humidity = document.getElementById("humidity");
 const pressure = document.getElementById("pressure");
 const form = document.querySelector("form");
+const main = document.querySelector("main");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -32,6 +33,11 @@ const searchWeather = () => {
         clouds.innerText = data.clouds.all;
         humidity.innerText = data.main.humidity;
         pressure.innerText = data.main.pressure;
+      } else {
+        main.classList.add("error");
+        setTimeout(() => {
+          main.classList.remove("error");
+        }, 1000);
       }
 
       valueSearch.value = "";
