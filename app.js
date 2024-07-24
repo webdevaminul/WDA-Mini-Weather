@@ -43,3 +43,9 @@ const searchWeather = () => {
       valueSearch.value = "";
     });
 };
+
+const initApp = () => {
+  valueSearch.value = "Bangladesh";
+  searchWeather();
+};
+initApp();
