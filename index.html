@@ -3,8 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- Meta Info -->
+    <meta name="title" content="WDA Mini Weather" />
+    <meta
+      name="description"
+      content="A weather application that provides real-time weather updates based on user location or search queries."
+    />
+    <meta
+      name="keywords"
+      content="weather, weather app, real-time weather, weather updates, geolocation"
+    />
+    <meta name="author" content="webdevaminul" />
+
+    <!-- Title and FavIcon -->
+    <title>WDA Mini Weather</title>
+    <link rel="shortcut icon" href="/assets/weather-favicon.png" type="image/x-icon" />
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <!-- Font Awesome Icon -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -12,6 +30,7 @@
   </head>
   <body>
     <main>
+      <!-- Input Field -->
       <form action="">
         <input type="text" autocomplete="off" id="valueSearch" />
         <button>
@@ -20,42 +39,45 @@
       </form>
 
       <section class="result">
+        <!-- City Name & Flag-->
         <figure class="name" id="city">
-          <figcaption>Bangladesh</figcaption>
-          <img src="https://flagsapi.com/BD/shiny/32.png" alt="flag" />
+          <figcaption>Place Name</figcaption>
+          <img src="https://flagsapi.com/BD/shiny/32.png" alt="" />
         </figure>
 
+        <!-- Current Temperature -->
         <figure class="temperature" id="temperature">
           <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="" />
-          <figcaption>
-            <span>31</span>
-            <sup>o</sup>
-          </figcaption>
+          <figcaption><span>00</span><span>&deg;</span></figcaption>
         </figure>
 
-        <p class="description">Overcast clouds</p>
+        <!-- Weather Description -->
+        <p class="description">Weather Status</p>
 
+        <!-- Weather Details -->
         <ul>
           <li>
             <span>Clouds</span>
             <i class="fa-solid fa-cloud"></i>
-            <span id="clouds">98</span>%
+            <span id="clouds">0</span>%
           </li>
           <li>
             <span>Humidity</span>
             <i class="fa-solid fa-droplet"></i>
-            <span id="humidity">55</span>%
+            <span id="humidity">0</span>%
           </li>
           <li>
             <span>Pressure</span>
             <i class="fa-solid fa-gauge"></i>
-            <span id="pressure">1001</span>hPa
+            <span id="pressure">0</span>hPa
           </li>
         </ul>
       </section>
+
+      <!-- Loading Indicator -->
       <div id="loading" class="hidden"></div>
     </main>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="/javascript/app.js"></script>
   </body>
 </html>
