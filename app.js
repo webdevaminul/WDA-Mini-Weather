@@ -7,6 +7,7 @@ const humidity = document.getElementById("humidity");
 const pressure = document.getElementById("pressure");
 const form = document.querySelector("form");
 const main = document.querySelector("main");
+const loading = document.getElementById("loading");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -19,6 +20,7 @@ const id = "9505fd1df737e20152fbd78cdb289b6a";
 const url = "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=" + id;
 
 const searchWeather = () => {
+  loading.classList.add("visible");
   fetch(url + "&q=" + valueSearch.value)
     .then((res) => res.json())
     .then((data) => {
@@ -28,8 +30,10 @@ const searchWeather = () => {
         displayError(data.message);
       }
       valueSearch.value = "";
+      loading.classList.remove("visible");
     })
-    .catch((error) => {
+    .catch(() => {
+      loading.classList.remove("visible");
       displayError("An error occurred while fetching");
     });
 };
