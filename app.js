@@ -23,25 +23,36 @@ const searchWeather = () => {
     .then((res) => res.json())
     .then((data) => {
       if (data.cod == 200) {
-        city.querySelector("figcaption").innerText = data.name;
-        city.querySelector("img").src =
-          "https://flagsapi.com/" + data.sys.country + "/shiny/32.png";
-        temperature.querySelector("img").src =
-          "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@4x.png";
-        temperature.querySelector("figcaption span").innerText = data.main.temp;
-        description.innerText = data.weather[0].description;
-        clouds.innerText = data.clouds.all;
-        humidity.innerText = data.main.humidity;
-        pressure.innerText = data.main.pressure;
+        updateWeatherInfo(data);
       } else {
-        main.classList.add("error");
-        setTimeout(() => {
-          main.classList.remove("error");
-        }, 1000);
+        displayError(data.message);
       }
-
       valueSearch.value = "";
+    })
+    .catch((error) => {
+      displayError("An error occurred while fetching");
     });
+};
+
+const displayError = (message) => {
+  alert(message);
+  main.classList.add("error");
+  setTimeout(() => {
+    main.classList.remove("error");
+  }, 1000);
+};
+
+const updateWeatherInfo = (data) => {
+  city.querySelector("figcaption").innerText = data.name;
+  city.querySelector("img").src = `https://flagsapi.com/${data.sys.country}/shiny/32.png`;
+  temperature.querySelector(
+    "img"
+  ).src = `https://openweathermap.org/img/wn/"${data.weather[0].icon}"@4x.png`;
+  temperature.querySelector("figcaption span").innerText = data.main.temp;
+  description.innerText = data.weather[0].description;
+  clouds.innerText = data.clouds.all;
+  humidity.innerText = data.main.humidity;
+  pressure.innerText = data.main.pressure;
 };
 
 const initApp = () => {
